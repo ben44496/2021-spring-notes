@@ -1,5 +1,5 @@
 Announcements;
-- PSA 1 (2 weeks from today)
+- PSET 1 (2 weeks from today)
 - Reading Assignment is out
 - TA office hours (Wed. 4-5 pm)
 
