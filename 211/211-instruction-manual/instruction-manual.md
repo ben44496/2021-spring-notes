@@ -21,7 +21,7 @@ Each of the above are ranked by which one should be easiest to use and makes the
 We will use Secure Shell (SSH) to help us access a Engineering Work Station (EWS) node through Visual Studio Code (VSCode). At UIUC, you can request compute resources through EWS with your NetID and use it to work on assignments from your classes. The reason we want to use an EWS server is because CS 225 runs test on EWS so you want to test your code with the tools you can and can't use. Let's get started.
 
 Instructions:
-1. **Download**: Download VSCode from [this](https://code.visualstudio.com/download) link. Please make sure you get the correct version for your operating system (OS). Follow the instructions to install the application.
+1. <a name="vscode"></a> **Download**: Download VSCode from [this](https://code.visualstudio.com/download) link. Please make sure you get the correct version for your operating system (OS). Follow the instructions to install the application.
 https://code.visualstudio.com/download
 
     *Note: If you are confused whether to get the 64-bit or 32-bit version, you can check your computer's OS for the information. Most computers will use the 64-bit version.*
@@ -75,10 +75,12 @@ Now you should be fully connected to EWS through SSH on VSCode and can use VSCod
 ## 2) Docker
 **WARNING! Docker may not work on M1 Macs.**
 
-1) **Installing Docker:** Please install the correct Docker depending on your OS.
-    - For Windows:
-    - For Mac:
-    - For Linux: 
+1) **Installing Docker:** Please use [this](https://docs.docker.com/get-docker/) link and follow the directions listed to install Docker. Make sure you install the one for your OS.
+
+    Once you have installed the application, start up Docker Desktop, as you may need to setup some settings.
+
+
+2) **Install VSCode**: Install VSCode following [these](#vscode) instructions.
 
 
 
