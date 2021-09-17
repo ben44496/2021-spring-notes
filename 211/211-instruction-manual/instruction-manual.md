@@ -96,7 +96,7 @@ https://code.visualstudio.com/download
 
     A new VSCode window should pop up and automatically attempt to connect to the remote EWS server through SSH. Wait a moment and it will prompt you to enter a passcode. 
     
-    Enter your Illinois passcode associated with your NetID. It will load up the window and connect to your SSH. If it is not working, makes sure you have correctly typed your passcode and correctly spelled the SSH target (see 3).
+    Enter your Illinois passcode associated with your NetID. It will load up the window and connect to your SSH. If it is not working, make sure you have correctly typed your passcode and correctly spelled the SSH target (see 3).
 
 5. **Git in CS225**: Follow [this](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) link to set up GitHub on EWS.
 
@@ -120,9 +120,9 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
 2. **Install VSCode**: Install VSCode following [these](#vscode) instructions from the [VSCode install](#vscode).
 
-    Once installed, on the left toolbar click on the "*Add-On Extensions*" button (<img src="fig_2.jpg" width="20"/>). Search for "Remote-Containers" (by Microsoft) and click install.
+    Once installed, on the left toolbar click on the "*Add-On Extensions*" button (<img src="fig_2.png" width="20"/>). Search for "Remote-Containers" (by Microsoft) and click install.
     
-3. <a name="docker-3"></a>**Git in CS 225**: Use the following link to set up Git for the class. 
+3. <a name="docker-3"></a>**Git in CS 225**: Use the following [link](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) to set up Git for the class. Please finish that tutorial before coming back to this one.
 
     Navigate to the `cs225git/` folder that you have created (the git repository).
 
@@ -140,13 +140,15 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
     At the top, there should be a drop bar (or just a bar if you have not downloaded the "Remote-SSH" extension) and choose "Containers." The first thing on the left window will show "Containers" and a short blurb about how to get started.
 
-    At the bottom-most righthand corner of your screen, there is a green widget button with two arrows facing each other. Click it and a prompt should pop up. Search for the command `Remote-Container: Open Folder in Container`.
+    <img src="fig_8.png" width="400"/>
 
-    It will then prompt you which folder you want to open, choose `cs225git/` (full path: `/home/[YOUR NETID]]/cs225git/`). It will then prompt you again, choose the `From Dockerfile` option. 
+    At the bottom-most righthand corner of your screen, there is a green widget button (<img src="fig_9.png" width="20"/>) with two arrows facing each other. Click it and a prompt should pop up. Search for the command `Remote-Container: Open Folder in Container`.
+
+    It will then prompt you which folder you want to open, choose `cs225git/` (full path: `/home/[YOUR NETID]]/cs225git/`). It will then prompt you again and choose the `From Dockerfile` option. 
 
     ***Note**: If you don't find the `From  Dockerfile` option, check out [this](#trouble4) troubleshooting question.*
 
-    This will take some time for the first time, so sit back and grab your favorite boba.
+    This will take some time for the first time, so sit back and grab your favorite boba or drink!
 
 If it works, you can access your local files using VSCode and run them using the terminal inside your Docker container. Visit the troubleshooting section if you have any questions!
 
@@ -164,13 +166,13 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
 
 
 2. **Launch Session**: Press "Launch Session" and select "MATE" as the option.
-3. **Start VSCode**: Startup VSCode and click the "File Explorer" button on the left sidebar (1st button) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[YOUR NETID])
+3. **Start VSCode**: Startup VSCode in FastX and click the "File Explorer" button on the left sidebar (1st button) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[YOUR NETID])
 4. **Git in CS225**: Follow [this](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) link to set up GitHub on EWS.
 
 ### Instructions (desktop client)
 1. **Download FastX**: Download the FastX Client here: https://www.starnet.com/fastx/current-client.
 
-    Once finished downloading, start FastX
+    Once it has finished downloading, start FastX.
 
 2. **Establish new connection**: Click the `+` sign to add a new connection, and select "SSH"
 
@@ -191,7 +193,7 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
 
     Click the `+` icon to launch a new graphical session. Double click `MATE` to launch the session using Mate.
 
-4. **Start VSCode**: Startup VSCode and click the "File Explorer" button on the left sidebar (1st button) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[YOUR NETID])
+4. **Start VSCode**: Startup VSCode and click the "File Explorer" button on the left sidebar (<img src="fig_10.png" width="20"/>) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[YOUR NETID]`)
 
 
 5. **Git in CS225**: Follow [this](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) link to set up GitHub on EWS.
