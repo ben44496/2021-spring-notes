@@ -20,7 +20,9 @@ Today:
 $h = ae^{j\theta}$
 $a = \frac{\alpha}{d}$
 $\phi = -(\frac{2\pi}{\lambda} \times d)$ mod $2\pi$
-Negative sign because the receiver guesses the value after received?? No real difference
+Negative sign because the receiver gets the value after the transmitter?? It is just a notation
+
+**Question**: Why negative sign?
 
 $\angle h_2 - \angle  h_1 = -(\frac{2\pi}{\lambda} \times (d_2-d_1))$ mod $2\pi$
 $d_1-d_2 = xcos\theta$
@@ -50,7 +52,7 @@ $\angle h_1 = \frac{-2\pi}{\lambda}(d+kxcos\theta)$
 
 $\Sigma_{i=0}^{N-1}h_i \rightarrow$ small number
 Insight: How can I rotate $h_1$ so that it is perfectly aligned with $h_0$.
-$\angle h_1 = \angle h_0 + \frac{2\pi}{\lambda}xcos\theta
+$\angle h_1 = \angle h_0 + \frac{2\pi}{\lambda}xcos\theta$
 
 **Please copy the part where he talks about $\theta'$**
 $\Sigma_{i=0}^{N-1}
