@@ -46,24 +46,26 @@ Each of the above are ranked by ease to use and install.
 <a name="ssh-through-vscode"></a>
 ## 1) SSH through VSCode
 
-We will use Secure Shell (SSH) to help us access a Engineering Work Station (EWS) node through Visual Studio Code (VSCode). At UIUC, you can request compute resources through EWS with your NetID and use it to work on assignments from your classes. The reason we want to use an EWS server is because CS 225 runs test on EWS so you want to test your code with the tools you can and can't use. Let's get started.
+We will use Secure Shell (SSH) to help us access a Engineering Work Station (EWS) node through Visual Studio Code (VSCode). SSH is a way of connecting to another computer without needing to be there in person. At UIUC, you can request compute resources through EWS with your NetID and use it to work on assignments from your classes. The reason we want to use an EWS server is because CS 225 runs test on EWS so you want to test your code with the tools you can and can't use. VSCode is a text-editor created by Microsoft that offers a lot of add-on functionalities, like has SSH built in. Let's get started.
 
 ### Instructions
-1. <a name="vscode"></a> **Download**: Download VSCode from [this](https://code.visualstudio.com/download) link. Please make sure you get the correct version for your operating system (OS). Follow the instructions to install the application.
+1. <a name="vscode"></a> **Download**: Download VSCode from [this](https://code.visualstudio.com/download) link. Make sure to get the correct version for your operating system. Follow the instructions to install the application.
 https://code.visualstudio.com/download
 
     ***Note**: If you are confused whether to get the 64-bit or 32-bit version, you can check your computer's OS for the information. Most computers will use the 64-bit version.*
 
 
-2. **Remote-SSH Extension**: Once you have VSCode installed, please open the application up. You should see something like this:
+2. **Remote-SSH Extension**: Once VSCode is installed, open the application up. You should see something like this:
 
     <img src="fig_1.png" width="500"/>
 
-    On the left sidebar, click the icon with the 4 cubes (<img src="fig_2.png" width="20"/>). This should to the Add-On Extensions page. Please search for the "Remote-SSH" extension 
+    On the left sidebar, click the icon with the 4 cubes (<img src="fig_2.png" width="20"/>). This should open the Add-On Extensions page. Search for the "Remote-SSH" extension.
 
-3. **Connecting to EWS**: To SSH into EWS, press the computer monitor icon that has appeared on your sidebar (<img src="fig_3.png" width="20"/>). 
+3. **Connect to EWS**: To SSH$^{1}$ into EWS, press the computer monitor icon that has appeared on your sidebar (<img src="fig_3.png" width="20"/>). 
 
-    `SSH Targets` should be displayed near the top. If this is not the case, click on the drop down menu located at the top of this window, and select `SSH Targets`. It should look like this:
+    $^1$**Note**: SSH is also used as a verb, meaning *to connect to a server using SSH*.
+
+    The phrase `SSH Targets` should be displayed near the top. If this is not the case, click on the drop down menu located at the top of this window, and select `SSH Targets`. It should look like this:
 
     <img src="fig_4.png" width="400"/>
 
@@ -92,7 +94,7 @@ https://code.visualstudio.com/download
 
     <img src="fig_6.png" width="400"/>
 
-4. **Opening a new window**: Mouse over the `linux.ews.illinois.edu` target and you should see a small button pop up on the right (<img src="fig_7.png" width="20"/>). Click on it.
+4. **Open a new window**: Mouse over the `linux.ews.illinois.edu` target and you should see a small button pop up on the right (<img src="fig_7.png" width="20"/>). Click on it.
 
     A new VSCode window should pop up and automatically attempt to connect to the remote EWS server through SSH. Wait a moment and it will prompt you to enter a passcode. 
     
@@ -113,7 +115,7 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
 ### Instructions
 
-1. **Installing Docker:** Please use [this](https://docs.docker.com/get-docker/) link and follow the directions listed to install Docker. Make sure you install the one for your OS.
+1. **Installing Docker:** Use [this](https://docs.docker.com/get-docker/) link and follow the directions listed to install Docker. Make sure you install the one for your OS.
 
     Once you have installed the application, start up Docker Desktop, as you may need to setup some settings.
 
@@ -122,7 +124,7 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
     Once installed, on the left toolbar click on the "*Add-On Extensions*" button (<img src="fig_2.png" width="20"/>). Search for "Remote-Containers" (by Microsoft) and click install.
     
-3. <a name="docker-3"></a>**Git in CS 225**: Use the following [link](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) to set up Git for the class. Please finish that tutorial before coming back to this one.
+3. <a name="docker-3"></a>**Git in CS 225**: Use the following [link](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) to set up Git for the class. Finish that tutorial before coming back to this one.
 
     Navigate to the `cs225git/` folder that you have created (the git repository).
 
@@ -205,7 +207,7 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
 - Why do I get a rejected connection when I connect to EWS with SSH?
   - Check that you have correctly spelled the SSH target (`[NETID]@linux.ews.illinois.edu`). Also make sure you are correctly entering in your Illinois password.
 - I cannot find `cs225git/`
-  - If you have followed the guide to setting up CS 225 but you cannot find the `cs225git/` folder in your `/home/[NETID]` directory, it could be that you cloned the repository with just your NetID, so look for a folder with your NetID here (ie. `[NETID]/`). If you do not see either `/home/[NETID]/cs225git/` or `/home/[NETID]/[NETID]`, please make sure you have ran this command in the terminal (inside your `/home/[NETID]` folder): 
+  - If you have followed the guide to setting up CS 225 but you cannot find the `cs225git/` folder in your `/home/[NETID]` directory, it could be that you cloned the repository with just your NetID, so look for a folder with your NetID here (ie. `[NETID]/`). If you do not see either `/home/[NETID]/cs225git/` or `/home/[NETID]/[NETID]`, make sure you have ran this command in the terminal (inside your `/home/[NETID]` folder): 
   
     ```
     git clone https://github-dev.cs.illinois.edu/cs225-fa21/NETID.git cs225git
