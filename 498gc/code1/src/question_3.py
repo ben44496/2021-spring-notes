@@ -93,32 +93,6 @@ class listenerNode():
             self.linearvelocity()
             self.br.sendTransform((self.x, self.y, 0.0), self.q, rospy.Time.now(),"/base_link" , "/map")#this line is used to transform from local frame to global frame and it is necessary to plot the trajectory in RVIZ
             pub_odom.publish(self.odom)
-            
-            # if self.x < 10.0 and self.y == 0.0:
-            #     self.x+=0.5
-            #     self.y == 0.0
-            #     if self.x == 10.0:
-            #         self.theta = -math.pi/2
-
-            # elif self.x == 10.0 and self.y == 0.0:
-            #     self.y -= 0.5
-            #     self.theta = -math.pi/2
-            # elif self.x == 10.0 and self.y < 0 and self.y > -10.0:
-            #     self.y -= 0.5
-            #     self.x = 10.0
-            #     if self.y == -10.0:
-            #         self.theta -=math.pi/2
-            # elif self.x > 0.0 and self.y == -10.0:
-            #     self.x-=0.5
-            #     self.y = -10.0
-            #     if self.x == 0.0:
-            #         self.theta -=math.pi/2
-            # elif self.x == 0.0 and self.y < 0.0:
-            #     self.y += 0.5
-            #     self.x = 0.0
-            #     if self.y == 0.0:
-            #         self.theta -=math.pi/2
-        
 
             # self.publish()
             self.print_ans()
