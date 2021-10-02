@@ -18,7 +18,7 @@ In this guide, we will go over how to properly set up your machine so that you c
 
 #
 ## Introduction
-Connecting and testing your code on EWS is vital to your success in CS 225. You want to develop on as close to a platform as our testing platform, as sometimes you might be using the wrong C++ version or extra packages that are not allowed during testing, causing your test cases to fail. In order to set yourself up for success, we have created a guide to help either emulate or connect to the same environment we test on.
+Connecting and testing your code on the Engineering Works Space (EWS) environment is vital to your success in CS 225. You want to develop on as close to a platform as our testing platform to make sure everything runs correctly. If you do not test on EWS, you might be using the wrong C++ version or extra packages that are not allowed during testing, causing your test cases to fail. In order to set yourself up for success, we have created a guide to help either emulate or connect to the same environment we test on.
 
 There are 3 main ways of doing so: 
 1) [SSH through VSCode](#ssh-through-vscode)
@@ -26,30 +26,31 @@ There are 3 main ways of doing so:
 3) [Fast X](#fastx)
 
 ### Pros/Cons
-|          | Pros                 | Cons |
-| :------- | :------------------- | :------------------ |
-| VSCode SSH  | Fast, less resource intensive| Internet connection req.       |
-| Docker      | No internet, on local disk   | Resource intensive |
-| Fast X      | Graphical UI*   | Fast internet        |
+|          | Pros                 | Cons | Time |
+| :------- | :------------------- | :------------------ | :--- |
+| VSCode SSH  | Fast, less resource intensive| Req. Internet connection | 5 min.|
+| Docker      | No internet, on local disk   | Resource intensive | 5 min. |
+| Fast X      | Graphical UI*   | Fast internet | 1 min. |
 
-****Note**: VSCode can display files like images, text, etc. as well*
+****Note**: VSCode can display files like images, text, etc. as well. FastX is only 
+good if you need to display any simulation things like GTKWave (which is not used in this course)*
 
 Each of the above are ranked by ease to use and install.
 
 
 ### Before getting started
 - Make sure you have an internet connection
-- Familiarize with the terminal for your operating system (ie. `ls`, `cd`, `mkdir`, `git`, etc.). Feel free to keep a terminal cheat sheet on hand. Note that windows command line uses `dir` in place of `ls`.
+- The Terminal is a way to interact with your computer using text rather than with a graphical interface, and we use it a lot to run programs. Familiarize yourself with the terminal for your operating system (ie. `ls`, `cd`, `mkdir`, `git`, etc.). Feel free to keep a terminal cheat sheet on hand. Note that windows command line uses `dir` in place of `ls`. Start by Google searching "terminal" followed by the name of your operating system.
 - (Optional) Familiarize yourself with `git` and the most popular commands `git add`, `git commit`, `git checkout`, `git branch`, `git status`, and more. I suggest [this tutorial](https://learngitbranching.js.org/) for those who are new to Git.
 
 #
 <a name="ssh-through-vscode"></a>
 ## 1) SSH through VSCode
 
-We will use Secure Shell (SSH) to help us access a Engineering Work Station (EWS) node through Visual Studio Code (VSCode). SSH is a way of connecting to another computer without needing to be there in person. At UIUC, you can request compute resources through EWS with your NetID and use it to work on assignments from your classes. The reason we want to use an EWS server is because CS 225 runs test on EWS so you want to test your code with the tools you can and can't use. VSCode is a text-editor created by Microsoft that offers a lot of add-on functionalities, like has SSH built in. Let's get started.
+We will use Secure Shell (SSH) to help us access an EWS node through Visual Studio Code (VSCode). SSH is a way of connecting to another computer without needing to be there in person. VSCode is a text editor that allows us to also use SSH functionality so we can edit code that is hosted on EWS. At UIUC, you can request compute resources through EWS with your NetID and use it to work on assignments from your classes. The reason we want to use an EWS server is because CS 225 runs test on EWS so you want to test your code with the tools you can and can't use. Let's get started.
 
 ### Instructions
-1. <a name="vscode"></a> **Download**: Download VSCode from [this](https://code.visualstudio.com/download) link. Make sure to get the correct version for your operating system. Follow the instructions to install the application.
+1. <a name="vscode"></a> **Download VSCode**: Download VSCode from [this](https://code.visualstudio.com/download) link. Make sure to get the correct version for your operating system. Follow the instructions to install the application.
 https://code.visualstudio.com/download
 
     ***Note**: If you are confused whether to get the 64-bit or 32-bit version, you can check your computer's OS for the information. Most computers will use the 64-bit version.*
@@ -94,9 +95,9 @@ https://code.visualstudio.com/download
 
     <img src="fig_6.png" width="400"/>
 
-4. **Open a new window**: Mouse over the `linux.ews.illinois.edu` target and you should see a small button pop up on the right (<img src="fig_7.png" width="20"/>). Click on it.
+4. **Open a new VSCode window**: Mouse over the `linux.ews.illinois.edu` target. You should see a small button pop up on the right (<img src="fig_7.png" width="20"/>). Click on it.
 
-    A new VSCode window should pop up and automatically attempt to connect to the remote EWS server through SSH. Wait a moment and it will prompt you to enter a passcode. 
+    A new VSCode window should pop up and automatically attempt to connect to the remote EWS server through SSH. Wait a moment for it to load. It will then prompt you to enter a passcode. 
     
     Enter your Illinois passcode associated with your NetID. It will load up the window and connect to your SSH. If it is not working, make sure you have correctly typed your passcode and correctly spelled the SSH target (see 3).
 
@@ -150,7 +151,7 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
     ***Note**: If you don't find the `From  Dockerfile` option, check out [this](#trouble4) troubleshooting question.*
 
-    This will take some time for the first time, so sit back and grab your favorite boba or drink!
+    Loading the docker container will take some time for the first time. This is expected.
 
 If it works, you can access your local files using VSCode and run them using the terminal inside your Docker container. Visit the troubleshooting section if you have any questions!
 
