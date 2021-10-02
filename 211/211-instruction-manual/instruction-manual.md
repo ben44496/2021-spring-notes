@@ -15,6 +15,10 @@ In this guide, we will go over how to properly set up your machine so that you c
     - [Instructions (web browser)](#instructions-web-browser)
     - [Instructions (desktop client)](#instructions-desktop-client)
   - [Troubleshooting](#troubleshooting)
+      - [SSH](#ssh)
+      - [Docker](#docker)
+      - [FastX](#fastx)
+      - [General Questions](#general-questions)
 
 #
 ## Introduction
@@ -56,15 +60,17 @@ https://code.visualstudio.com/download
     ***Note**: If you are confused whether to get the 64-bit or 32-bit version, you can check your computer's OS for the information. Most computers will use the 64-bit version.*
 
 
-2. **Remote-SSH Extension**: Once VSCode is installed, open the application up. You should see something like this:
+2. **Install the Remote-SSH Extension**: Once VSCode is installed, open the application up. You should see something like this:
 
     <img src="fig_1.png" width="500"/>
 
     On the left sidebar, click the icon with the 4 cubes (<img src="fig_2.png" width="20"/>). This should open the Add-On Extensions page. Search for the "Remote-SSH" extension.
 
-3. **Connect to EWS**: To SSH$^{1}$ into EWS, press the computer monitor icon that has appeared on your sidebar (<img src="fig_3.png" width="20"/>). 
+    Once you have successfully installed the extension, the Remote Explorer icon (<img src="fig_3.png" width="20"/>) should appear.
 
-    $^1$**Note**: SSH is also used as a verb, meaning *to connect to a server using SSH*.
+3. **Connect to EWS**: To SSH$^{1}$ into EWS, press the computer monitor icon (<img src="fig_3.png" width="20"/>) that has appeared on your sidebar. 
+
+    $^1$**Note**: Here we use SSH to mean *connecting to a server using SSH*. Both definitions are used throughout the instructions.
 
     The phrase `SSH Targets` should be displayed near the top. If this is not the case, click on the drop down menu located at the top of this window, and select `SSH Targets`. It should look like this:
 
@@ -112,14 +118,13 @@ Now you should be fully connected to EWS through SSH on VSCode and can use VSCod
 From [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software)):
 > Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
 
-Basically, we are able to emulate a Linux environment (specifically the EWS one) and run code on there to test. The power of doing so is that we don't need to connect to anything else as everything runs locally on your computer. Let's get into it!
+To summarize, we are able to emulate a Linux environment (specifically the EWS one) and run code on there to test. Docker is a good solution if you don't have internet or your internet is slow, as everything runs locally on your computer. Let's get into it!
 
 ### Instructions
 
-1. **Installing Docker:** Use [this](https://docs.docker.com/get-docker/) link and follow the directions listed to install Docker. Make sure you install the one for your OS.
+1. **Install Docker:** Use [this](https://docs.docker.com/get-docker/) link and follow the directions listed to install Docker. Make sure you install the the correct version for your OS.
 
-    Once you have installed the application, start up Docker Desktop, as you may need to setup some settings.
-
+    Once you have installed Docker, start up Docker Desktop. It may prompt you for some settings, but 
 
 2. **Install VSCode**: Install VSCode following [these](#vscode) instructions from the [VSCode install](#vscode).
 
@@ -141,19 +146,19 @@ Basically, we are able to emulate a Linux environment (specifically the EWS one)
 
 4. **Create the "Remote" Container**: Navigate to the "*Remote Explorer*" denoted by this file icon - <img src="fig_3.png" width="20"/>. 
 
-    At the top, there should be a drop bar (or just a bar if you have not downloaded the "Remote-SSH" extension) and choose "Containers." The first thing on the left window will show "Containers" and a short blurb about how to get started.
+    At the top, there should be a drop bar (or just a bar if you have not downloaded the "Remote-SSH" extension) and choose "Containers." If you have installed it correctly and correctly selected Docker, then the first icon on the left window should show "Containers" and a short blurb about how to get started (see below for reference).
 
     <img src="fig_8.png" width="400"/>
 
     At the bottom-most righthand corner of your screen, there is a green widget button (<img src="fig_9.png" width="20"/>) with two arrows facing each other. Click it and a prompt should pop up. Search for the command `Remote-Container: Open Folder in Container`.
 
-    It will then prompt you which folder you want to open, choose `cs225git/` (full path: `/home/[YOUR NETID]]/cs225git/`). It will then prompt you again and choose the `From Dockerfile` option. 
+    The pop-up will then prompt you which folder you want to open, choose `cs225git/` (full path: `/home/[YOUR NETID]]/cs225git/`). It will then prompt you again and choose the `From Dockerfile` option. 
 
     ***Note**: If you don't find the `From  Dockerfile` option, check out [this](#trouble4) troubleshooting question.*
 
     Loading the docker container will take some time for the first time. This is expected.
 
-If it works, you can access your local files using VSCode and run them using the terminal inside your Docker container. Visit the troubleshooting section if you have any questions!
+If everything has installed correctly, you can access your local files using VSCode and run them using the terminal inside your Docker container. Visit the troubleshooting section if you have any questions!
 
 #
 <a name="fastx"></a> 
@@ -163,7 +168,7 @@ Fast X is a method of connecting to a remote server and streaming the UI/UX that
 
 Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.engineering/page.php?id=81727).
 ### Instructions (web browser)
-1. **Website Link**: Copy and paste (or click) this link in your web browser https://fastx.ews.illinois.edu
+1. **Navigate to Website**: Copy and paste (or click) this link in your web browser https://fastx.ews.illinois.edu
    
    When prompted, enter your NetID and Illinois password.
 
@@ -185,10 +190,10 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
     Name: EWS Linux
     Host: fastx.ews.illinois.edu
     Port: 22
-    User: [YOUR NETID]
+    User: [NETID]
     ```
     
-    Make sure you replace `[YOUR NETID]` with your actual NetID. Do not check the "FIPS compliant mode" box.
+    Make sure you replace `[NETID]` with your actual NetID. Do not check the "FIPS compliant mode" box.
 
     Click save.
 
@@ -196,7 +201,7 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
 
     Click the `+` icon to launch a new graphical session. Double click `MATE` to launch the session using Mate.
 
-4. **Start VSCode**: Startup VSCode and click the "File Explorer" button on the left sidebar (<img src="fig_10.png" width="20"/>) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[YOUR NETID]`)
+4. **Start VSCode**: Startup VSCode and click the "File Explorer" button on the left sidebar (<img src="fig_10.png" width="20"/>) and press the "Open Folder" blue button. Choose your home directory (the path is `/home/[NETID]`)
 
 
 5. **Git in CS225**: Follow [this](https://courses.grainger.illinois.edu/cs225/fa2021/resources/) link to set up GitHub on EWS.
@@ -205,8 +210,19 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
 
 #
 ## Troubleshooting
+#### SSH
 - Why do I get a rejected connection when I connect to EWS with SSH?
   - Check that you have correctly spelled the SSH target (`[NETID]@linux.ews.illinois.edu`). Also make sure you are correctly entering in your Illinois password.
+
+#### Docker
+- <a name="trouble4"></a>There is no option to choose a Dockerfile when I try to create a new container
+  - Make sure you have done [step 3 of the Docker install](#docker-3).
+
+#### FastX
+- My FastX is being rejected
+  - Most likely it is because it doesn't like your IP or you do not have port forward enabled. Try connecting to campus VPN using this link: https://go.illinois.edu/vpn
+
+#### General Questions
 - I cannot find `cs225git/`
   - If you have followed the guide to setting up CS 225 but you cannot find the `cs225git/` folder in your `/home/[NETID]` directory, it could be that you cloned the repository with just your NetID, so look for a folder with your NetID here (ie. `[NETID]/`). If you do not see either `/home/[NETID]/cs225git/` or `/home/[NETID]/[NETID]`, make sure you have ran this command in the terminal (inside your `/home/[NETID]` folder): 
   
@@ -215,9 +231,5 @@ Instructions mainly taken from [here](https://answers.uillinois.edu/illinois.eng
     ```
 
     Note: Make sure to replace `NETID` with your actual NetID in the URL.
-- <a name="trouble4"></a>There is no option to choose a Dockerfile when I try to create a new container
-  - Make sure you have done [step 3 of the Docker install](#docker-3).
-- My FastX is being rejected
-  - Most likely it is because it doesn't like your IP or you do not have port forward enabled. Try connecting to campus VPN using this link: https://go.illinois.edu/vpn
 - None of my Git commands are working!
   - You may need to install Git (especially if you are on Windows). Follow [this website](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for information on how to do it.
