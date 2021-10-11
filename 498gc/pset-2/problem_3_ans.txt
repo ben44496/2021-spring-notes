@@ -1,0 +1,17 @@
+Problem 3 Answers
+
+Question 1:
+Please see Graphs that load in problem_3.py
+
+Question 2:
+Please see Graphs that load in problem_3.py
+
+Question 3:
+Please see Graphs that load in problem_3.py
+
+The dynamics do not become realistic. If you calculate the velocity at the points
+when it is turning, the forces do not match up. Increasiong amplitude causes it to 
+make a lot of turns around the point it wants to go to (think overshoot). Increasing
+frequency causes it to want to oscillate a lot more to get to its destination and
+so it will turn a lot more which is not possible in real life. The rolling without
+slipping assumption inherent in the dynamics is not realistic under these conditions.
