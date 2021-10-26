@@ -1,4 +1,4 @@
-# Midterm Practice 1
+# Midterm Practice 1 (Machine Learning)
 ## 1 Machine Learning
 ### 1.1 Kernals and Regression
 #### 1.1.1
@@ -42,7 +42,7 @@ Non-linear activiation functions are crucial to mdern day neural networks. Answe
 - (c) What's the advantage of using the ReLu function over tanh or sigmoid?
   - ReLU is non-differentiable at 0. Advantage is that higher derivative at $>1$, but $tanh$ and $\sigma$ has low derivative at high x-axis. 
 
-# Midterm Practice 2
+# Midterm Practice 2 (Wireless)
 ### 1.1 Modulation
 Recall, modulation is the process of converting bits into symbols (complex numbers). Each symbol is then trasmitted over the air. For the questions below, assume that the symbols per second are constant, i.e. a transmitter transmits a fixed $N$ number of symbols per second. 
 - *True/False*. A QPSK modulation achieves a datarate of $4N$ bits pers second. A QPSK modulation achieves a datarate of $4N$ bits per second.
@@ -59,11 +59,13 @@ Recall, modulation is the process of converting bits into symbols (complex numbe
     $$H = [[\frac{1+j}{\sqrt2}, \frac{-3+3j}{\sqrt2}], [2j, -6]]$$
 
     We need to check if $H$ is invertible because $H^{-1}y = H^{-1}Hx$. Easy way for $2\times 2$ is check $det(H) \neq 0 \neq ad-bc$. 
-- (b) ...
+- (b) 
+  $$H = [[\frac{1+2j}{\sqrt2}, \frac{-2+3j}{\sqrt2}], [1, -3]]$$
+
 - (c)
     $$H = [[\frac{3}{\sqrt2}, \frac{1}{\sqrt2}], [2j, -6]]$$
 
-2. If the channel matrix doesn't allow for two independent streams of data, how can you leverage the multiple antennas on the transmitter and receiver?
+1. If the channel matrix doesn't allow for two independent streams of data, how can you leverage the multiple antennas on the transmitter and receiver?
   - We can use Beamforming. Beamforming does not require invertability and get imporved SNR. This is where we can multiple $h_2$ by $\alpha = \frac{h_1}{h_2}$.
   - $y_1 = h_1x + h_2x + n$ and $y_b' = h_1x + n$
     - SNR = $\frac{|h_1 + h_2|}{n}$, $SNR_2 = \frac{|h_1|}{n}
