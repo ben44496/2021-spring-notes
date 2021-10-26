@@ -109,7 +109,113 @@ Answer: Basically the same, as the 1-norm promotes zero. Need to check...
 #
 Next week:
 - Decision Trees
-- Neural networksPost/email on CW if we have recommendations for guest speakers.
+- Neural networks# Decision Trees
+Example: Is Green St. going to be busy today?
+
+Training set $\rightarrow$ 1000 days, busy or not busy
+
+Features: Term (Summer/Fall/Spring), weather (Sunny, rain, snow, thunder), school states (session or break), day of week
+
+We can construct a decision tree where each node is a decision on a feature that we pick.
+
+Pros:
+- Interpretability
+- Complex decision boundaries
+
+What functions can a decision tree represent?
+- Represent all functions
+- Boolean functions
+
+## Learning Decision Trees
+1. For any boolean function, there is a decision tree
+2. "Simple" decision trees $\rightarrow$ NP complete
+
+## Greedy/Recursive Algorithm
+1. Pick a feature
+   1. This splits the dataset into two (Yes/No) categories
+2. Recursively pick a feature (which splits the dataset) at each node
+
+## Criteria for Splitting
+### Probability
+We want to choose criteria that will heavily be against or for a class given the feature. We don't want want uniform distributions (ie. $p(Y=0) = 0.5$ and $p(Y=1) = 0.5$). Here we have high entropy because we do not know what is going on. We want to decrease that.
+
+Things to keep in mind
+1. Uniform distributions are bad
+2. We want "peaky" distributions
+
+## Entropy
+$H(y) = -\sum_{i=1}^k p(Y=y_i)log_2 (p(Y=y_i))$
+
+With $y_1 = 0.5$ and $y_2 = 0.5$, we have $H(y) = 1$.
+
+Entropy is a measure of randomness. If we had a coin where it always lands head, we would have an entropy of 0. If it is 50/50, we have max entropy at 1. It is also defined as the "least no. of digits required to represent the outcome of your experiments"
+
+We pick the feature by minimizing this entropy.
+
+## Information Gain
+$H(y|x) = -\sum_{j=1}^vp(x=x_j)\sum_{i=i}^{k}p(y=y_i|x=x_j)log_2(pY=y_i|x=x_j))$
+
+$IG(y; x) = H(y) - H(y|x)$
+
+$H(y|x)$ calculates the largest reduction in entropy. The idea is how much of the entropy reduction does picking $x$ lead to?
+
+### Information Gain Example
+Conditional Entropy:
+Let's do dataset given by mathematical boolean function OR.
+
+| x_1 | x_2     |  y     |
+| :---|:----:   |   ---: |
+| 0   | 0       | 0      |
+| 0   | 1       | 1      |
+| 1   | 0       | 1      |
+| 1   | 1       | 1      |
+| 1   | 1       | 1      |
+| 0   | 1       | 1      |
+
+$P(Y=1) = \frac{5}{6}$, $P(Y=0) = \frac{1}{6}$
+
+$H(y) = 0.65$
+
+$H(y|x^{(i)}) = (p(x^{(i)}=0)\{-p(Y=0|x^{(i)}=0)log(...) - p(Y=1|x^{(i)}=0)log(...)\}) + (p(x^{(i)}=1)\{-p(Y=0|x^{(i)}=1)log(...) - p(Y=1|x^{(i)}=1)log(...)\}) = \frac{2}{6}$
+
+## Back to learning
+Recursively create nodes and split according to highest information gain at each level.
+
+## Stopping Criterion
+Ideas:
+1. IG = 0
+2. all examples have same label
+3. all examples have same features
+
+### Idea 1: Using XOR for IG = 0
+If we use XOR here, at each level of the tree (given $x_1, x_2$ and the standard boolean truth table), we have IG = 0.5 for all nodes. Therefore, it is unhelpful and impossible to use IG = 0 as a criteria for stopping. Instead we should use Idea 2 or Idea 3 instead.
+
+## Overfitting
+If we let the tree grow to maximum depth, it could be such that each leaf node contains only one data point and overfits while achieving 100% accuracy on test data.
+
+Avoid overfitting:
+- Limit decision tree size (hyperparameter)
+- Pruning
+  - If I remove a node and my accuracy goes up, I am overfitting
+- Minimum samples per node
+
+## Generalize to Real Valued Inputs (ie. continuous)
+We need:
+1. Threshold
+2. Feature
+
+This allows us to determine (through inequality) which feature/threshold pair leads to maximum information gain.
+
+## Picking the best threshold (not covered)
+
+## Ensemble Methods
+Train $N$ decision trees that look slightly different. But we need to introduce randomness
+
+How to get randomness:
+1. Subsample training set (bagging)
+2. Random forests $\rightarrow$ each split, consider a subset of your features (as opposed to all of them)
+
+Post/email on CW if we have recommendations for guest speakers.
 
 # Perception
 Input: $x \in \mathbb{R}^D$, ie. $x_1, x_2, ..., x_D$
@@ -164,7 +270,7 @@ Here we want a one-hot encoding for output class, so we want to do something lik
 $softmax(y_k) = \frac{e^{y_k}}{\Sigma_{m=1}^{M}(e^{y_m})}$
 
 #### Another popular one, tanh
-$tanh(x) = \frac{}{}$ ???
+$tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$
 
 ## Gradients
 Define $z^{(k)}_{h}$ where $k$ is the $k^{th}$ layer, so $z^{(0)} = x$
@@ -177,7 +283,7 @@ $z_L = h(\Sigma_i w^k_{i}z^{k-1}_i)$
 For regression, let's have loss function be the L2 norm
 $\ell(w) = (y - z^L)^2$
 
-$\nabla_w\ell(w) = 2(y-z_j)(-z_j)$Announcements:
+$\nabla_w\ell(w) = 2(y-z_j)(-z_j)$...Announcements:
 - PSET 2 is out
 - Project Ideas are out
 - 2 Reading assignments per week
@@ -543,6 +649,7 @@ Send a preamble message that is globally known
 Real equation: $y = hx + n$ where $n$ is noise
 - Could be temperature based for example (radiation)
 
+
 SNR = $\frac{\text{Signal power}}{\text{Noise Power}} = \frac{(hx)^2}{n^2}$
 dB$_{log_{10}}$ = $10 log_{10}(\frac{(hx)^2}{n^2})$
 
@@ -553,22 +660,25 @@ $y_1+y_2 = (h_1+h_2)x+(n_1+n_2)$
 Assuming $|h_1|=|h_2|$ and $|n_1|=|n_2|$
 
 If they are aligned, they magnify amplitude/gain, but if they are opposite direction they cancel each other out
+We could have $h_1 + h_2 = 2h_1$ (ie. same direction, positive) or $h_1 + h_2 = 0$ (ie. same direction, negative).
 
-SNR = $\frac{|(h_1+h_2)x|^2}{|n_1+n_2|^2} = \frac{|\sqrt{2}h_1x|^2}{|\sqrt{2}n_1|^2} = \frac{|h_1x|^2}{|n_1|^2}$
+On average, if $h_1$ and $h_2$ were random, we would get
+SNR = $\frac{|(h_1+h_2)x|^2}{|n_1+n_2|^2} = \frac{|2h_1x|^2}{|\sqrt{2}n_1|^2} = \frac{|h_1x|^2}{|n_1|^2}$
 
 **Conclusion**: So as you can see, there is no additional benefit to adding more antennas, just additional gain
 
-**Please copy the proof of the next part from the online notes to show 2 SNR**
+**Hypothesis**: There is a multiplying factor we can combine in a smart way so we can double SNR
 
-**Conclusion**: There is a multiplying factor we can combine in a smart way so we can double SNR
-
-**Please copy the proof of the next part from the online notes to show there is some $\alpha$ we can use to show we can boost SNR**
+### **Diversity Beamforming**
+$\alpha = \frac{h_1}{h_2}$
+$y = h_1x + \alpha h_2x + n = 2h_1x + n$
 
 $\alpha = \frac{h_1}{h_2}$
 
 This is called **Diversity Beamforming** or **Diversity Gain**
 
 $\text{SNR} \leftrightarrow \text{datarate}$
+
 $\text{datarate} \propto log(\text{SNR})$
 
 Therefore increasing SNR is only helpful if you have shitty SNR in the first place.
@@ -578,12 +688,16 @@ Therefore increasing SNR is only helpful if you have shitty SNR in the first pla
 
 2x2 system-
 $y_1 = h_{11}x_1+h_{21}x_2+n_1$
+
 $y_2 = h_{12}x_1+h_{12}x_2+n_2$
+
 $y = Hx + n$
+
 $H^{-1}y = x + H^{-1}n$ - This is called **Multiplexing**, basically it increases our data rate because it allows us to send two messages at the same time
 
 #### Benefits of MIMO
 - Manage interferences
+  - Combines the signals such that multiple signals can go over the air and avoid collision (because we encode them into an additive signal)
 - Get multiple streams
 - Lets you operate in low SNR conditions
 
@@ -615,28 +729,36 @@ Example: (2 | 2)x2x2
 - Receiver $(y_1, y_2)$ to $(y_3, y_4)$
 
 $y_1 = h_{11}x_1 + h_{21}x_2 + (h_{31}+h_{41})x_3$
+
 $y_2 = h_{12}x_1 + h_{22}x_2 + (h_{32}+h_{42})x_3$
 
 We don't have enough variables to get a single solution. Answer: Why not emit $\alpha x_3$ and $\beta x_3$ instead (ie. Transmit ($\alpha x_3, \beta x_3$))?
 
 $y_1 = h_{11}x_1 + h_{21}x_2 + (\alpha h_{31}+\beta h_{41})x_3$
+
 $y_2 = h_{12}x_1 + h_{22}x_2 + (\alpha h_{32}+\beta h_{42})x_3$
 ***
 Interference alignment: 
 Choose $\alpha$ and $\beta$ s.t. 
 $\alpha h_{31} + \beta h_{41} = h_{21}$
+
 $\alpha h_{32} + \beta h_{42} = h_{22}$
 Note: two variables, so singular solution
 
 $y_1 = h_{11}x_1 + h_{21}(x_2+x_3)$
+
 $y_2 = h_{12}x_1 + h_{22}(x_2+x_3)$
+
 Note: $(x_2+x_3) = x'$, something that we don't really care about.
 
 We can solve for $x_1$
 ***
 Interference cancellation:
+
 $y_1 = h_{13}x_1 + h_{23}x_2 + (\alpha h_{33} + \beta h_{43})x_3$
+
 $y_2 = h_{13}x_1 + h_{23}x_2 +(\alpha h_{33} + \beta h_{43})x_3$
+
 Since we know $x_1$ we just solve for the other two variables.
 ***
 Example: (3 | 3)x2x2
@@ -650,11 +772,12 @@ Example: (3 | 3)x2x2
 
 #
 ## Rate adaptation
-- Binary Phase Shift Keying (BPSK), Quadrature PSK, 16 Quadrature Amplitude Modulation (QAM-16, 4bits per symbol)
+- Binary Phase Shift Keying (BPSK), Quadrature PSK, 16 Quadrature Amplitude Modulation (QAM-16, 4 bits per symbol)
 	- All about SNR
-- For lower SNR, BPSK does better (1mbps @ 7dB) versus 16-QAM (0mbps @ 7dB), but at 25 dB we have (1mbps vs. 4mbps) so how do we adapt?
+- For lower SNR, BPSK does better (1 mbps @ 7dB) versus 16-QAM (0 mbps @ 7dB), but at 25 dB we have (1mbps vs. 4mbps) so how do we adapt?
 
 **Question**: Do I just get Least Sig. Bit if I have low SNR?
+
 **Answer**: We get the same datarate as a lower one, so like sure but I guess
 
 How do I figure out what rate should I transmit at?
@@ -716,16 +839,22 @@ GPS orbit at MEO orbit (20,000 km), 0.067s or 67ms delay roughly to get to you
 
 **Accuracy Needed?**
 1s? $\epsilon$ = $300,000$ km (Bigger than the earth)
+
 1ms? $\epsilon$ = $300$ km (state of Illinois)
+
 1Ms? $\epsilon$ = $0.3$ km or $300$ m (From CSL to Green St.)
+
 1ns? $\epsilon$ = $3$ m. This is what we need.
 
 **Starting Point** (How do I know when the satellite transmitted its signal?):
 Problem: 2:20pm on their clock is not the same as 2:20pm on our phone.
 
 $t_1 + offset$
+
 $t_2 + offset$
+
 $t_3 + offset$
+
 $t_4 + offset$
 
 The differences are ok though. So we can calculate $d_2 - d_1$ with high accuracy.
@@ -744,7 +873,9 @@ RSS is not a well-conditioned graph ($\delta > \epsilon$ where $\epsilon = f(\de
 Also it sucks because of multipath.
 
 $y = (h_1+h_2+h_3)x$ where each $h$ is a different multipath to the receiver.
+
 Constructive $\rightarrow$ Signal strength is high
+
 Destructive $\rightarrow$ Signal strength is low
 
 ## Fingerprinting
@@ -816,8 +947,11 @@ Observations:
 2. AP density is increasing
 
 $\angle h_0 = \frac{-2\pi}{\lambda}d$
+
 $\angle h_1 = \frac{-2\pi}{\lambda}(d+xcos\theta)$
+
 ...
+
 $\angle h_1 = \frac{-2\pi}{\lambda}(d+kxcos\theta)$
 
 $\Sigma_{i=0}^{N-1}h_i \rightarrow$ small number
@@ -898,7 +1032,9 @@ No real world thing right now for wireless sensing/mapping.Today (9/16/2021):
 
 ## Recap: Human Sensing
 $h = h_{direct} + h_{human} + h_{reflectors}$
+
 $h' = h_{direct} + h'_{human} + h_{reflectors}$
+
 $h' - h = h'_{human} - h_{human}$
 
 ### Ideas from Prev. Lecture:
@@ -924,8 +1060,11 @@ $time = \frac{\Delta F}{slope}$
 
 **FMCW $\leftrightarrow$ Distance**
 $\Delta T = \frac{\Delta F}{\frac{B}{T}}$
+
 $T$ is time for the sweep
+
 $dist = c \times \Delta T / 2$
+
 Divide by 2 because two way.
 
 Because there are a lot of reflections depending on the objects (ie. a different time delay line for every single object), we can use FFT to divide up the reflected summation of the frequency shift. We do FFT to isolate each of these frequency shifts. Different frequencies (ie. each peeks from FFT on FMCW output) correspond to objects at different distance.
@@ -1019,7 +1158,7 @@ $y$ is ground truth
 $\hat{y}$ is prediction
 Possible loss function:
 - $||y-\hat{y}||^2$ (aka mean squared error)
-- Binary Entropy Loss
+- Binary Entropy Loss ($y_ilog(p(y_i))+(1-y_i)log(1-p(y_i))$)
 - 1-norm
 - Threshold function (ie. if $|y-\hat{y}|< \epsilon \rightarrow \ell = 0$ else $|y-\hat{y}|$)
 
