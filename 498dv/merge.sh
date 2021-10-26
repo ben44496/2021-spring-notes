@@ -1,0 +1,1 @@
+cat 498dv-lec-*.md > merge.md
