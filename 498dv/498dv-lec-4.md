@@ -11,28 +11,36 @@ Example: (2 | 2)x2x2
 - Receiver $(y_1, y_2)$ to $(y_3, y_4)$
 
 $y_1 = h_{11}x_1 + h_{21}x_2 + (h_{31}+h_{41})x_3$
+
 $y_2 = h_{12}x_1 + h_{22}x_2 + (h_{32}+h_{42})x_3$
 
 We don't have enough variables to get a single solution. Answer: Why not emit $\alpha x_3$ and $\beta x_3$ instead (ie. Transmit ($\alpha x_3, \beta x_3$))?
 
 $y_1 = h_{11}x_1 + h_{21}x_2 + (\alpha h_{31}+\beta h_{41})x_3$
+
 $y_2 = h_{12}x_1 + h_{22}x_2 + (\alpha h_{32}+\beta h_{42})x_3$
 ***
 Interference alignment: 
 Choose $\alpha$ and $\beta$ s.t. 
 $\alpha h_{31} + \beta h_{41} = h_{21}$
+
 $\alpha h_{32} + \beta h_{42} = h_{22}$
 Note: two variables, so singular solution
 
 $y_1 = h_{11}x_1 + h_{21}(x_2+x_3)$
+
 $y_2 = h_{12}x_1 + h_{22}(x_2+x_3)$
+
 Note: $(x_2+x_3) = x'$, something that we don't really care about.
 
 We can solve for $x_1$
 ***
 Interference cancellation:
+
 $y_1 = h_{13}x_1 + h_{23}x_2 + (\alpha h_{33} + \beta h_{43})x_3$
+
 $y_2 = h_{13}x_1 + h_{23}x_2 +(\alpha h_{33} + \beta h_{43})x_3$
+
 Since we know $x_1$ we just solve for the other two variables.
 ***
 Example: (3 | 3)x2x2
@@ -46,11 +54,12 @@ Example: (3 | 3)x2x2
 
 #
 ## Rate adaptation
-- Binary Phase Shift Keying (BPSK), Quadrature PSK, 16 Quadrature Amplitude Modulation (QAM-16, 4bits per symbol)
+- Binary Phase Shift Keying (BPSK), Quadrature PSK, 16 Quadrature Amplitude Modulation (QAM-16, 4 bits per symbol)
 	- All about SNR
-- For lower SNR, BPSK does better (1mbps @ 7dB) versus 16-QAM (0mbps @ 7dB), but at 25 dB we have (1mbps vs. 4mbps) so how do we adapt?
+- For lower SNR, BPSK does better (1 mbps @ 7dB) versus 16-QAM (0 mbps @ 7dB), but at 25 dB we have (1mbps vs. 4mbps) so how do we adapt?
 
 **Question**: Do I just get Least Sig. Bit if I have low SNR?
+
 **Answer**: We get the same datarate as a lower one, so like sure but I guess
 
 How do I figure out what rate should I transmit at?

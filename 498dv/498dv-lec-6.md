@@ -13,7 +13,7 @@ Exisiting database of locations with their corresponding fingerprints, and just 
 
 Today:
 - Channel Phase
-- Angle of Arriva
+- Angle of Arrival
 - Antenna Arrays
 #
 ## Channel Phase
@@ -31,7 +31,7 @@ $\angle h_2 - \angle  h_1 = -(\pi cos\theta)$ mod $2\pi$
 $-1 < cos\theta < 1$
 $cos\theta = \frac{\angle h_2 - \angle h_1}{\pi}$
 
-Question: Noise, error analysis? Shape of Antenna Array?
+**Question**: Noise, error analysis? Shape of Antenna Array?
 Answer: So just choose $x \le \frac{\lambda}{2}$
 Answer: Shape of Antenna array doesn't matter too much, just ambiguity I guess.
 
@@ -46,8 +46,11 @@ Observations:
 2. AP density is increasing
 
 $\angle h_0 = \frac{-2\pi}{\lambda}d$
+
 $\angle h_1 = \frac{-2\pi}{\lambda}(d+xcos\theta)$
+
 ...
+
 $\angle h_1 = \frac{-2\pi}{\lambda}(d+kxcos\theta)$
 
 $\Sigma_{i=0}^{N-1}h_i \rightarrow$ small number

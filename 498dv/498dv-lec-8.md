@@ -5,7 +5,9 @@ Today (9/16/2021):
 
 ## Recap: Human Sensing
 $h = h_{direct} + h_{human} + h_{reflectors}$
+
 $h' = h_{direct} + h'_{human} + h_{reflectors}$
+
 $h' - h = h'_{human} - h_{human}$
 
 ### Ideas from Prev. Lecture:
@@ -31,8 +33,11 @@ $time = \frac{\Delta F}{slope}$
 
 **FMCW $\leftrightarrow$ Distance**
 $\Delta T = \frac{\Delta F}{\frac{B}{T}}$
+
 $T$ is time for the sweep
+
 $dist = c \times \Delta T / 2$
+
 Divide by 2 because two way.
 
 Because there are a lot of reflections depending on the objects (ie. a different time delay line for every single object), we can use FFT to divide up the reflected summation of the frequency shift. We do FFT to isolate each of these frequency shifts. Different frequencies (ie. each peeks from FFT on FMCW output) correspond to objects at different distance.

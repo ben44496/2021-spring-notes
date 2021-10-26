@@ -42,7 +42,7 @@ $y$ is ground truth
 $\hat{y}$ is prediction
 Possible loss function:
 - $||y-\hat{y}||^2$ (aka mean squared error)
-- Binary Entropy Loss
+- Binary Entropy Loss ($y_ilog(p(y_i))+(1-y_i)log(1-p(y_i))$)
 - 1-norm
 - Threshold function (ie. if $|y-\hat{y}|< \epsilon \rightarrow \ell = 0$ else $|y-\hat{y}|$)
 

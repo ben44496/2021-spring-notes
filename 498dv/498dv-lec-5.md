@@ -23,16 +23,22 @@ GPS orbit at MEO orbit (20,000 km), 0.067s or 67ms delay roughly to get to you
 
 **Accuracy Needed?**
 1s? $\epsilon$ = $300,000$ km (Bigger than the earth)
+
 1ms? $\epsilon$ = $300$ km (state of Illinois)
+
 1Ms? $\epsilon$ = $0.3$ km or $300$ m (From CSL to Green St.)
+
 1ns? $\epsilon$ = $3$ m. This is what we need.
 
 **Starting Point** (How do I know when the satellite transmitted its signal?):
 Problem: 2:20pm on their clock is not the same as 2:20pm on our phone.
 
 $t_1 + offset$
+
 $t_2 + offset$
+
 $t_3 + offset$
+
 $t_4 + offset$
 
 The differences are ok though. So we can calculate $d_2 - d_1$ with high accuracy.
@@ -51,7 +57,9 @@ RSS is not a well-conditioned graph ($\delta > \epsilon$ where $\epsilon = f(\de
 Also it sucks because of multipath.
 
 $y = (h_1+h_2+h_3)x$ where each $h$ is a different multipath to the receiver.
+
 Constructive $\rightarrow$ Signal strength is high
+
 Destructive $\rightarrow$ Signal strength is low
 
 ## Fingerprinting

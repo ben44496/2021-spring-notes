@@ -18,6 +18,7 @@ Send a preamble message that is globally known
 Real equation: $y = hx + n$ where $n$ is noise
 - Could be temperature based for example (radiation)
 
+
 SNR = $\frac{\text{Signal power}}{\text{Noise Power}} = \frac{(hx)^2}{n^2}$
 dB$_{log_{10}}$ = $10 log_{10}(\frac{(hx)^2}{n^2})$
 
@@ -28,22 +29,25 @@ $y_1+y_2 = (h_1+h_2)x+(n_1+n_2)$
 Assuming $|h_1|=|h_2|$ and $|n_1|=|n_2|$
 
 If they are aligned, they magnify amplitude/gain, but if they are opposite direction they cancel each other out
+We could have $h_1 + h_2 = 2h_1$ (ie. same direction, positive) or $h_1 + h_2 = 0$ (ie. same direction, negative).
 
-SNR = $\frac{|(h_1+h_2)x|^2}{|n_1+n_2|^2} = \frac{|\sqrt{2}h_1x|^2}{|\sqrt{2}n_1|^2} = \frac{|h_1x|^2}{|n_1|^2}$
+On average, if $h_1$ and $h_2$ were random, we would get
+SNR = $\frac{|(h_1+h_2)x|^2}{|n_1+n_2|^2} = \frac{|2h_1x|^2}{|\sqrt{2}n_1|^2} = \frac{|h_1x|^2}{|n_1|^2}$
 
 **Conclusion**: So as you can see, there is no additional benefit to adding more antennas, just additional gain
 
-**Please copy the proof of the next part from the online notes to show 2 SNR**
+**Hypothesis**: There is a multiplying factor we can combine in a smart way so we can double SNR
 
-**Conclusion**: There is a multiplying factor we can combine in a smart way so we can double SNR
-
-**Please copy the proof of the next part from the online notes to show there is some $\alpha$ we can use to show we can boost SNR**
+### **Diversity Beamforming**
+$\alpha = \frac{h_1}{h_2}$
+$y = h_1x + \alpha h_2x + n = 2h_1x + n$
 
 $\alpha = \frac{h_1}{h_2}$
 
 This is called **Diversity Beamforming** or **Diversity Gain**
 
 $\text{SNR} \leftrightarrow \text{datarate}$
+
 $\text{datarate} \propto log(\text{SNR})$
 
 Therefore increasing SNR is only helpful if you have shitty SNR in the first place.
@@ -53,12 +57,16 @@ Therefore increasing SNR is only helpful if you have shitty SNR in the first pla
 
 2x2 system-
 $y_1 = h_{11}x_1+h_{21}x_2+n_1$
+
 $y_2 = h_{12}x_1+h_{12}x_2+n_2$
+
 $y = Hx + n$
+
 $H^{-1}y = x + H^{-1}n$ - This is called **Multiplexing**, basically it increases our data rate because it allows us to send two messages at the same time
 
 #### Benefits of MIMO
 - Manage interferences
+  - Combines the signals such that multiple signals can go over the air and avoid collision (because we encode them into an additive signal)
 - Get multiple streams
 - Lets you operate in low SNR conditions
 
