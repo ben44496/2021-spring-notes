@@ -1,0 +1,13 @@
+Number of topics: 16 
+
+The following list has pairs of topic name and msg type
+[('/Accelx', 'std_msgs/Float32'), ('/Accely', 'std_msgs/Float32'), ('/Accelz', 'std_msgs/Float32'), ('/Blspeed', 'std_msgs/Float32'), ('/Brspeed', 'std_msgs/Float32'), ('/Flspeed', 'std_msgs/Float32'), ('/Frspeed', 'std_msgs/Float32'), ('/Gyro_pitch', 'std_msgs/Float32'), ('/Gyro_roll', 'std_msgs/Float32'), ('/Gyro_yaw', 'std_msgs/Float32'), ('/Timestamp', 'std_msgs/Float32'), ('/latitude', 'std_msgs/Float32'), ('/longitude', 'std_msgs/Float32'), ('/rosout', 'rosgraph_msgs/Log'), ('/rosout_agg', 'rosgraph_msgs/Log'), ('/clock', 'rosgraph_msgs/Clock')] 
+
+The following dictionary provides whether they are being pubbed or subbed.
+Note that it makes no sense for rostopics to be publishers or subscribers, as
+that is more about nodes. Here, all topics in the rosbag are being published to
+by the rosbag play itself. The only things that are different are technically rosout
+because it is for rosmaster. The question only asks for the rosbag so I have only
+included those topic informations here.
+16
+{'/Accelx': 'publisher', '/Accely': 'publisher', '/Accelz': 'publisher', '/Blspeed': 'publisher', '/Brspeed': 'publisher', '/Flspeed': 'publisher', '/Frspeed': 'publisher', '/Gyro_pitch': 'publisher', '/Gyro_roll': 'publisher', '/Gyro_yaw': 'publisher', '/Timestamp': 'publisher', '/clock': 'publisher', '/latitude': 'publisher', '/longitude': 'publisher', '/rosout': 'publisher', '/rosout_agg': 'publisher'}
