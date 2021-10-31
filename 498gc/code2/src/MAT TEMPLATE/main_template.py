@@ -43,8 +43,8 @@ bfz = 0;
 
 
 #IMU location specifier
-r_imu=np.array([[-0.5/12, -3/12, 1/12]]).T*0 #I have set this to zero, you can include the effect of this
-r_GPS=np.array([1.5, 0 ,0]) #This is the location of the GPS wrt CG, this is very important
+r_imu=np.array([[-0.5/12, -3/12, 1/12]]).T*0.0 #I have set this to zero, you can include the effect of this
+r_GPS=np.array([1.5, 0 ,0])*0 #This is the location of the GPS wrt CG, this is very important
 #rotation matrix ------------------------------------------------------
 phi= x[0]
 theta= x[1]
@@ -103,10 +103,14 @@ xhat = np.array([[0, 0, 0, 0, 0, 0, b[0,0], b[1,0], b[2,0], b[3,0], bp, bq, br, 
 
 #noise params process noise (my gift to you :))
 Q = np.diag([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.8, 0.8, 0.8, 0.8, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001])
+Q *= 100 # For testing Question 2
 
 #noise params, measurement noise
 #measurements are GPS position and velocity and mag
 R = np.diag([9, 9, 9, 3, 3, 3])
+# R = np.diag([.01, .01, .01, .01, .01, .01]) # For Q2
+# R = np.diag([.1, .1, .1, .1, .1, .1]) # For Q2
+# R = np.diag([10, 10, 10, 8, 8, 8])
 
 #Initialize P, the covariance matrix
 P = np.diag([30, 30, 30, 3, 3, 3, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1])
