@@ -261,10 +261,10 @@ for k in range(0,tf):
     # Now assemble the Transition matrix
     Phi = np.zeros((16, 16))
     Phi[0:3,3:6] = np.eye(3) # delp/delv = F_pv = I_{3x3}
-    Phi[6:9, 6:10] = F_vq
-    Phi[6:9, 13:16] = F_vba
-    Phi[9:13, 9:13] = F_qq
-    Phi[9:13, 13:16] = F_qbw
+    Phi[3:6, 6:10] = F_vq
+    Phi[3:6, 13:16] = F_vba
+    Phi[6:10, 6:10] = F_qq
+    Phi[6:10, 10:13] = F_qbw
     
     #Propagate the error covariance matrix, I suggest using the continuous integration since Q, R are not discretized 
     Pdot = Phi@P+P@Phi.transpose() + Q
@@ -316,10 +316,6 @@ for k in range(0,tf):
     H[0:6, 0:6] = np.eye(6)
     H[0:3, 6:10] = H_xq
     H[3:6, 6:10] = H_xvq
-  
-    print(LA.norm(P), LA.norm(H))
-    if math.isnan(LA.norm(P) or math.isnan(LA.norm(H))):
-        break
 
     #Compute Kalman gain
     L_k = P @ H.T @ LA.inv((H @ P @ H.T) + R)
