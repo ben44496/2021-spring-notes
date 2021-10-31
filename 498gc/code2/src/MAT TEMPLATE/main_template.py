@@ -164,12 +164,6 @@ def Big_Omega(P, Q, R):
         [-Q, R, 0, -P],
         [-R, -Q, P, 0]
     ])
-    # return -1*np.array([
-    #     [0, P, Q, R],
-    #     [-P, 0, -R, Q],
-    #     [-Q, R, 0, -P],
-    #     [-R, -Q, P, 0]
-    # ])
 
 def delv_delq(q1, q2, q3, q4):
     return 2*np.array([
@@ -326,8 +320,6 @@ for k in range(0,tf):
     xhat = xhat + L_k @ (z - H @ xhat)
     
     #propagate error covariance approximation P = (np.eye(16,16)-K@H)@P
-    # S_k = H @ P @ H.T + R
-    # P = P - L_k @ S_k @ L_k.T
     P = (np.eye(16, 16) - L_k @ H) @ P
     #end
 
@@ -359,53 +351,44 @@ for k in range(0,tf):
 
 ##############################################################################
 plt.close('all')
-
+plt.figure(1)
+plt.plot(time,P_R[:,0:3])
+plt.title('Covariance of Position')
+plt.legend(['px','py','pz'])
+plt.figure(2)
+plt.plot(time,P_R[:,3:6])
+plt.legend(['pxdot','pydot','pzdot'])
+plt.title('Covariance of Velocities')
+plt.figure(3)
+plt.plot(time,P_R[:,6:10])
+plt.title('Covariance of Quaternions')
+plt.figure(4)
+plt.plot(time,xhatR[:,0:3],time,A[6:9,:].T,'r:')
+plt.title('Position')
+plt.figure(5)
+plt.plot(time,xhatR[:,3:6],time,A[9:12,:].T,'r:')
+plt.title('vel x y z')
+plt.figure(6)
+plt.plot(time,xhatR[:,6:10],time,A[12:16,:].T,'r:')
+plt.title('Quat')
+plt.figure(7)
+plt.plot(time,OMEGA[:,0],time,OMEGA[:,1],time,OMEGA[:,2])
+plt.title('OMEGA with Bias')
+plt.legend(['p','q','r'])
 plt.figure(8)
 plt.plot(time,PHI,'b', time, THETA, 'g', time,PSI, 'r', time,PHI_RAW,'b:',time,THETA_RAW,'g:',time,PSI_RAW,'r:')
 plt.legend(['phi','theta','psi','phiraw', 'thetaraw', 'psiraw'])
 plt.title('Phi, Theta, Psi')
-
-# plt.set_size_inches(2,3)
-plt.savefig("plot1.png")
-
-# plt.figure(1)
-# plt.plot(time,P_R[:,0:3])
-# plt.title('Covariance of Position')
-# plt.legend(['px','py','pz'])
-# plt.figure(2)
-# plt.plot(time,P_R[:,3:6])
-# plt.legend(['pxdot','pydot','pzdot'])
-# plt.title('Covariance of Velocities')
-# plt.figure(3)
-# plt.plot(time,P_R[:,6:10])
-# plt.title('Covariance of Quaternions')
-# plt.figure(4)
-# plt.plot(time,xhatR[:,0:3],time,A[6:9,:].T,'r:')
-# plt.title('Position')
-# plt.figure(5)
-# plt.plot(time,xhatR[:,3:6],time,A[9:12,:].T,'r:')
-# plt.title('vel x y z')
-# plt.figure(6)
-# plt.plot(time,xhatR[:,6:10],time,A[12:16,:].T,'r:')
-# plt.title('Quat')
-# plt.figure(7)
-# plt.plot(time,OMEGA[:,0],time,OMEGA[:,1],time,OMEGA[:,2])
-# plt.title('OMEGA with Bias')
-# plt.legend(['p','q','r'])
-# plt.figure(8)
-# plt.plot(time,PHI,'b', time, THETA, 'g', time,PSI, 'r', time,PHI_RAW,'b:',time,THETA_RAW,'g:',time,PSI_RAW,'r:')
-# plt.legend(['phi','theta','psi','phiraw', 'thetaraw', 'psiraw'])
-# plt.title('Phi, Theta, Psi')
-# plt.figure(9)
-# plt.plot(time,xhatR[:,10:16])
-# plt.title('Bias')
-# plt.legend(['bp','bq','br','bfx','bfy','bfz'])
-# plt.figure(10)
-# plt.plot(time,OMEGA_RAW[:,0],time,OMEGA_RAW[:,1],time,OMEGA_RAW[:,2])
-# plt.title('OMEGA without Bias')
-# plt.legend(['p','q','r'])
-# plt.figure(11)
-# plt.plot(time,FX[:,0],time,FX[:,1],time,FX[:,2])
-# plt.title('accelerometer')
-# plt.legend(['ax','ay','az'])
-# plt.show()
+plt.figure(9)
+plt.plot(time,xhatR[:,10:16])
+plt.title('Bias')
+plt.legend(['bp','bq','br','bfx','bfy','bfz'])
+plt.figure(10)
+plt.plot(time,OMEGA_RAW[:,0],time,OMEGA_RAW[:,1],time,OMEGA_RAW[:,2])
+plt.title('OMEGA without Bias')
+plt.legend(['p','q','r'])
+plt.figure(11)
+plt.plot(time,FX[:,0],time,FX[:,1],time,FX[:,2])
+plt.title('accelerometer')
+plt.legend(['ax','ay','az'])
+plt.show()
