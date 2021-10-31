@@ -1,0 +1,6 @@
+*catkin*
+build/
+devel/
+.vscode
+CMakeLists.txt
+code.txt
