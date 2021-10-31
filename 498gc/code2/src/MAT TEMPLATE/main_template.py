@@ -157,18 +157,18 @@ FX = np.zeros((A.shape[1],3))
 # Helper Functions I added
 def Big_Omega(P, Q, R):
     #TODO: Figure out if this should be multiplied by neg 1 or not, eq. 107, slide 87/107
-    # return np.array([
-    #     [0, P, Q, R],
-    #     [-P, 0, -R, Q],
-    #     [-Q, R, 0, -P],
-    #     [-R, -Q, P, 0]
-    # ])
-    return -1*np.array([
+    return np.array([
         [0, P, Q, R],
         [-P, 0, -R, Q],
         [-Q, R, 0, -P],
         [-R, -Q, P, 0]
     ])
+    # return -1*np.array([
+    #     [0, P, Q, R],
+    #     [-P, 0, -R, Q],
+    #     [-Q, R, 0, -P],
+    #     [-R, -Q, P, 0]
+    # ])
 
 def delv_delq(q1, q2, q3, q4):
     return 2*np.array([
@@ -223,7 +223,7 @@ for k in range(0,tf):
     f = np.array([fx, fy, fz])
     vdotx = np.dot(f, L_lb[:,0])
     vdoty = np.dot(f, L_lb[:,1])
-    vdotz = np.dot(f, L_lb[:,2])
+    vdotz = np.dot(f, L_lb[:,2]) + 32.2
     vdot = np.array([vdotx, vdoty, vdotz])
 
     qv = np.array([q1, q2, q3, q4])
